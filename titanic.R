@@ -16,16 +16,15 @@ library("rpart")
 
 train <- read.csv("data/train.csv")
 test <- read.csv("data/test.csv")
-str(train)
-summary(train)
-str(test)
-summary(test)
+full  <- bind_rows(train, test)
+str(full)
+summary(full)
 
 #####################################################################################
 #Add New Values to the Dataset
 #####################################################################################
 
 #We can take the first letter of the Cabin to get the deck
-train$Deck<-substr(train$Cabin,1,1)
+full$Deck<-substr(full$Cabin,1,1)
 #There are cabins A-G and a single Cabin T
-table(train$Deck)
+table(full$Deck)
